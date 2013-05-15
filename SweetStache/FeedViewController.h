@@ -15,7 +15,7 @@
 #import "MBProgressHUD.h"
 //#include <stdlib.h> //for randomizer
 
-@interface FeedViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate>
+@interface FeedViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) NSMutableArray *rawImages;
 @property (strong, nonatomic) NSMutableArray *displayImages;

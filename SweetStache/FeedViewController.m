@@ -7,6 +7,7 @@
 //
 
 #import "FeedViewController.h"
+#import "FeedCell.h"
 
 
 
@@ -21,6 +22,17 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     _rawImages = [[NSMutableArray alloc] init];
+//    _displayImages = [[NSMutableArray alloc] initWithObjects:@"poop",@"dumb",@"stupid", nil];
+    
+    //set delegate and data source
+    self.FeedScroll.delegate = self;
+    self.FeedScroll.dataSource = self;
+    
+    [self downloadAllImages];
+    [self setUpImages:_rawImages];
+    
+
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -204,6 +216,7 @@
             NSLog(@"how many images in displayimages? %i",_displayImages.count);   
         }
     });
+        [[self FeedScroll] reloadData];
     
 }
 
@@ -292,4 +305,45 @@
     [_HUD removeFromSuperview];
     _HUD = nil;
 }
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+//    if (_displayImages != NULL) {
+        return _displayImages.count;
+//    }
+//    else {
+//        return 5;
+//    }
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return 1;
+    
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"FeedCell";
+    
+//    if (_displayImages != NULL && _displayImages.count>0) {
+    
+    
+        FeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+        
+        [[cell cellImage]setImage:[_displayImages objectAtIndex:indexPath.item]];
+    
+//    [[cell nameLabel]setText:[appNames objectAtIndex:indexPath.item]];
+//    [[cell devLabel]setText:[NSString stringWithFormat:@"by %@",[appDevs objectAtIndex:indexPath.item]]];
+//    [[cell starLabel]setText:[NSString stringWithFormat:@"Rating: %@/5",[appStars objectAtIndex:indexPath.item]]];
+//    [[cell priceLabel]setText:[NSString stringWithFormat:@"$%@",[appPrices objectAtIndex:indexPath.item]]];
+    
+        cell.backgroundColor = [UIColor lightGrayColor];
+//    cell.layer.cornerRadius=30;         //make it pretty
+        return cell;
+//    }
+//    else return NULL;
+    
+}
+
+
 @end
