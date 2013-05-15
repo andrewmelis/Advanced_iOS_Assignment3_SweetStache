@@ -28,6 +28,8 @@
 		2838D2CA174351D50025D9F4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2C9174351D50025D9F4 /* Security.framework */; };
 		2838D2CC174351DD0025D9F4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2CB174351DD0025D9F4 /* StoreKit.framework */; };
 		2838D2CE174351E90025D9F4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2CD174351E90025D9F4 /* SystemConfiguration.framework */; };
+		2838D31217436D860025D9F4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2838D3101743579D0025D9F4 /* MBProgressHUD.m */; };
+		2838D3151743805E0025D9F4 /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2838D3141743805E0025D9F4 /* FeedCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		2838D2CD174351E90025D9F4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2838D30F1743579D0025D9F4 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		2838D3101743579D0025D9F4 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		2838D3131743805E0025D9F4 /* FeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCell.h; sourceTree = "<group>"; };
+		2838D3141743805E0025D9F4 /* FeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				2838D2B0174350730025D9F4 /* MainStoryboard.storyboard */,
+				2838D3131743805E0025D9F4 /* FeedCell.h */,
+				2838D3141743805E0025D9F4 /* FeedCell.m */,
 				2838D2A7174350730025D9F4 /* AppDelegate.h */,
 				2838D2A8174350730025D9F4 /* AppDelegate.m */,
 				2838D2B3174350730025D9F4 /* FeedViewController.h */,
@@ -228,6 +234,8 @@
 				2838D2A5174350730025D9F4 /* main.m in Sources */,
 				2838D2A9174350730025D9F4 /* AppDelegate.m in Sources */,
 				2838D2B5174350730025D9F4 /* FeedViewController.m in Sources */,
+				2838D31217436D860025D9F4 /* MBProgressHUD.m in Sources */,
+				2838D3151743805E0025D9F4 /* FeedCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

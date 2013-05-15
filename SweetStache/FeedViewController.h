@@ -21,7 +21,7 @@
 @property (strong, nonatomic) MBProgressHUD *HUD;
 @property (strong, nonatomic) MBProgressHUD *refreshHUD;
 
-@property (weak, nonatomic) IBOutlet UIScrollView *FeedScroll;
+@property (weak, nonatomic) IBOutlet UICollectionView *FeedScroll;
 
 - (IBAction)RefreshButton:(UIBarButtonItem *)sender;
 - (IBAction)CameraButton:(UIBarButtonItem *)sender;
