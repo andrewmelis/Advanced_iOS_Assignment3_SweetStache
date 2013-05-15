@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) NSMutableArray *rawImages;
 @property (strong, nonatomic) NSMutableArray *displayImages;
+@property (strong, nonatomic) NSMutableArray *displayTags;
 @property (strong, nonatomic) MBProgressHUD *HUD;
 @property (strong, nonatomic) MBProgressHUD *refreshHUD;
 

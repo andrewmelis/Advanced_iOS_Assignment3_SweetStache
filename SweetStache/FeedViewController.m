@@ -23,6 +23,10 @@
 	// Do any additional setup after loading the view, typically from a nib.
     _rawImages = [[NSMutableArray alloc] init];
 //    _displayImages = [[NSMutableArray alloc] initWithObjects:@"poop",@"dumb",@"stupid", nil];
+//    _displayTags = [[NSMutableArray alloc] init];
+    _displayImages = [[NSMutableArray alloc] init];
+    
+//    _displayTags  = [[NSMutableArray alloc]initWithObjects:@"testName1",@"testName2",@"testName3",@"testName4",@"testName5", nil ];
     
     //set delegate and data source
     self.FeedScroll.delegate = self;
@@ -75,6 +79,7 @@
     [_refreshHUD show:YES];
     
     [self downloadAllImages];
+    [_FeedScroll reloadData];
 }
 
 
@@ -83,7 +88,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto"];
     PFUser *user = [PFUser currentUser];
     [query whereKey:@"user" equalTo:user];
-    [query orderByAscending:@"createdAt"];
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if(!error) {
@@ -197,7 +202,7 @@
 {
     NSLog(@"setting up images");
     
-    _displayImages = [[NSMutableArray alloc] init]; //setting up new array each time--probably not the best
+//    _displayImages = [[NSMutableArray alloc] init]; //setting up new array each time--probably not the best
                                                     //ensures no duplicates, but worse performance
     
     // This method sets up the downloaded images and places them nicely in a grid
@@ -216,7 +221,7 @@
             NSLog(@"how many images in displayimages? %i",_displayImages.count);   
         }
     });
-        [[self FeedScroll] reloadData];
+//        [[self FeedScroll] reloadData];
     
 }
 
@@ -307,18 +312,20 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-//    if (_displayImages != NULL) {
-        return _displayImages.count;
-//    }
+
 //    else {
-//        return 5;
+        return 1;
 //    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 1;
-    
+    if (_displayImages != NULL) {
+        return _displayImages.count;
+    }
+    else {
+        return _displayTags.count;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -326,19 +333,20 @@
     static NSString *CellIdentifier = @"FeedCell";
     
 //    if (_displayImages != NULL && _displayImages.count>0) {
-    
+
     
         FeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-        
-        [[cell cellImage]setImage:[_displayImages objectAtIndex:indexPath.item]];
     
-//    [[cell nameLabel]setText:[appNames objectAtIndex:indexPath.item]];
-//    [[cell devLabel]setText:[NSString stringWithFormat:@"by %@",[appDevs objectAtIndex:indexPath.item]]];
-//    [[cell starLabel]setText:[NSString stringWithFormat:@"Rating: %@/5",[appStars objectAtIndex:indexPath.item]]];
-//    [[cell priceLabel]setText:[NSString stringWithFormat:@"$%@",[appPrices objectAtIndex:indexPath.item]]];
+    if ([_displayImages objectAtIndex:indexPath.item]) {
+    
+        [[cell cellImage]setImage:[_displayImages objectAtIndex:indexPath.item]];
+    }
+    if([_displayTags objectAtIndex:indexPath.item]) {
+        [[cell cellLabel]setText:[_displayTags objectAtIndex:indexPath.item]];
+    }
     
         cell.backgroundColor = [UIColor lightGrayColor];
-//    cell.layer.cornerRadius=30;         //make it pretty
+//        cell.layer.cornerRadius=30;         //make it pretty
         return cell;
 //    }
 //    else return NULL;

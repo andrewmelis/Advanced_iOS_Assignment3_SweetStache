@@ -10,5 +10,6 @@
 
 @interface FeedCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
+@property (weak, nonatomic) IBOutlet UILabel *cellLabel;
 
 @end
