@@ -121,10 +121,25 @@
                                             <constraint firstAttribute="width" constant="306" id="s77-KW-2KG"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9iW-1S-7k5">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="73" id="4k8-xK-4Aa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                                        <state key="normal" title="Draw">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="drawButton:" destination="hYm-Xa-uyS" eventType="touchUpInside" id="pFm-tl-sSj"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="9iW-1S-7k5" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="7Ho-AE-sxe"/>
                                     <constraint firstItem="QWg-Ew-yQQ" firstAttribute="centerX" secondItem="5IV-xz-l4F" secondAttribute="centerX" type="default" id="IwL-Zp-PrK"/>
+                                    <constraint firstAttribute="trailing" secondItem="9iW-1S-7k5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="NeO-7U-1kr"/>
                                     <constraint firstItem="QWg-Ew-yQQ" firstAttribute="centerY" secondItem="5IV-xz-l4F" secondAttribute="centerY" type="default" id="rep-jS-4sn"/>
                                 </constraints>
                             </view>
@@ -191,6 +206,54 @@
             <point key="canvasLocation" x="1097" y="299"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="EditViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButton:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="drawButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="shareButton:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="filterCollection" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="mainImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="FeedCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FeedCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="cellLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FeedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FeedViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="CameraButton:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="RefreshButton:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="FeedScroll" candidateClass="UICollectionView"/>
+            </relationships>
+        </class>
+        <class className="FilterCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FilterCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="filterPreview" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

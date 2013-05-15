@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 #import <Parse/Parse.h>
+#import "PaintView.h"
 
-@interface EditViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface EditViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, PaintViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *mainImageView;
 @property (strong, nonatomic) UIImage *destImage;
@@ -24,5 +25,8 @@
 - (IBAction)shareButton:(UIBarButtonItem *)sender;
 
 - (IBAction)doneButton:(UIBarButtonItem *)sender;
+- (IBAction)drawButton:(UIButton *)sender;
+
+- (void)paintView:(PaintView*)paintView finishedTrackingPath:(CGPathRef)path inRect:(CGRect)painted;
 
 @end

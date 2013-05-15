@@ -9,9 +9,13 @@
 #import "EditViewController.h"
 #import "FilterCell.h"
 #import <CoreImage/CoreImage.h>
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface EditViewController ()
+@property BOOL shouldMerge;
+@property (strong, nonatomic) UIImageView *backgroundView;
+@property (strong, nonatomic) PaintView *paintView;
 
 @end
 
@@ -158,6 +162,45 @@
     }
 }
 
+//painting methods
+
+/*******************************************************************************
+ * @method          paintView:
+ * @abstract
+ * @description
+ *******************************************************************************/
+- (void)paintView:(PaintView*)paintView finishedTrackingPath:(CGPathRef)path inRect:(CGRect)painted
+{
+    if (self.shouldMerge) {
+        [self mergePaintToImage:painted];
+    }
+}
+
+- (void)mergePaintToImage:(CGRect)painted
+{
+    // Create a new offscreen buffer that will be the UIImageView's image
+    CGRect bounds = self.mainImageView.bounds;
+    UIGraphicsBeginImageContextWithOptions(bounds.size, NO, self.backgroundView.contentScaleFactor);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // Copy the previous background into that buffer.  Calling CALayer's renderInContext: will redraw the view if necessary
+    CGContextSetBlendMode(context, kCGBlendModeCopy);
+    [self.mainImageView.layer renderInContext:context];
+    
+    // Now copy the painted contect from the paint view into our background image
+    // and clear the paint view.  as an optimization we set the clip area so that we only copy the area of paint view
+    // that was actually painted
+    CGContextClipToRect(context, painted);
+    CGContextSetBlendMode(context, kCGBlendModeNormal);
+    [self.paintView.layer renderInContext:context];
+    [self.paintView erase];
+    
+    // Create UIImage from the context
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    self.mainImageView.image = image;
+    UIGraphicsEndImageContext();
+}
+
 
 
 //collection view methods
@@ -187,6 +230,17 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)drawButton:(UIButton *)sender {
+    _paintView = [[PaintView alloc] initWithFrame:_mainImageView.bounds];
+    _paintView.lineColor = [UIColor blackColor];
+    _paintView.delegate = self;
+    [self.view addSubview:_paintView];
+    
+    _mainImageView.userInteractionEnabled = YES;
+    
+    //how do i turn it off? -- currently can't
+}
+
 
 - (IBAction)shareButton:(UIBarButtonItem *)sender {
     NSData *data = UIImageJPEGRepresentation(_mainImageView.image, 1.0);
@@ -195,8 +249,6 @@
     }
 
 }
-
-
 
 
 -(void)uploadImages:(NSData *)imageData
