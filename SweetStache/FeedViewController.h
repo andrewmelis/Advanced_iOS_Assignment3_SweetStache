@@ -6,17 +6,20 @@
 //  Copyright (c) 2013 Baller Status Inc. All rights reserved.
 //
 
+//help from Parse Tutorial: https://www.parse.com/tutorials/saving-images
+
+
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
 #import "MBProgressHUD.h"
-#include <stdlib.h> //for randomizer
+//#include <stdlib.h> //for randomizer
 
 @interface FeedViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate>
 
 @property (weak, nonatomic) NSMutableArray *allImages;
-@property (weak, nonatomic) MBProgressHUD *HUD;
-@property (weak, nonatomic) MBProgressHUD *refreshHUD;
+@property (strong, nonatomic) MBProgressHUD *HUD;
+@property (strong, nonatomic) MBProgressHUD *refreshHUD;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *FeedScroll;
 
