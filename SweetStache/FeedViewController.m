@@ -90,6 +90,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto"];
     PFUser *user = [PFUser currentUser];
     [query whereKey:@"user" equalTo:user];
+//    [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
@@ -280,25 +281,27 @@
 
 
 
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSLog(@"clicked on picture at index %i",indexPath.item);
-//    
-//    [self performSegueWithIdentifier:@"imageEdit" sender:self];
-//    
-//}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"clicked on picture at index %i",indexPath.item);
+    NSLog(@"what the hell kind of object is this %@",[self.displayImages objectAtIndex:indexPath.item]);
+    
+    UIImage *image = [_displayImages objectAtIndex:indexPath.item];
+    controllerForSegue.destImage = image;
+
+    [self performSegueWithIdentifier:@"editImage" sender:image];
+    [self.FeedScroll deselectItemAtIndexPath:indexPath animated:YES];
+    
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"imageEdit"]) {
-//        [self prepareForShowPhotoSegue:segue withIndexPath:sender];
-      
-        NSLog(@"clicked on picture at index %@",sender );
+    if ([segue.identifier isEqualToString:@"editImage"]) {
         
         controllerForSegue = segue.destinationViewController;
-        UIImage *image = [_displayImages objectAtIndex:0];
-//        UIImage *image = [_displayImages objectAtIndex:0];
-        controllerForSegue.mainImage = image;
+        
+        controllerForSegue.destImage = sender;
+
     }
 }
 @end

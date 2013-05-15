@@ -18,7 +18,7 @@
     //Parse credentials
     [Parse setApplicationId:@"LcTLLRaYWf9UpAWk1vMd5jumqLZOmIOdTeSeHixw" clientKey:@"h34VPKTuWaBvtd6QGsWikihfmYICO1zn0YMLbwui"];
     
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     PFUser *currentUser = [PFUser currentUser];
     if (!currentUser) {

@@ -10,9 +10,11 @@
 
 @interface EditViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
-@property (strong, nonatomic) UIImage *mainImage;
+@property (strong, nonatomic) IBOutlet UIImageView *mainImageView;
+@property (strong, nonatomic) UIImage *destImage;
 @property (weak, nonatomic) IBOutlet UICollectionView *filterCollection;
+
+@property (strong, nonatomic) NSMutableArray *filters;
 
 - (IBAction)shareButton:(UIBarButtonItem *)sender;
 
