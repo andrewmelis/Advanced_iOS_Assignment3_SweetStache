@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditViewController : UIViewController
+@interface EditViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) IBOutlet UIImageView *mainImageView;
 @property (strong, nonatomic) UIImage *destImage;

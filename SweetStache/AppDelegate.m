@@ -17,24 +17,24 @@
     
     //Parse credentials
     [Parse setApplicationId:@"LcTLLRaYWf9UpAWk1vMd5jumqLZOmIOdTeSeHixw" clientKey:@"h34VPKTuWaBvtd6QGsWikihfmYICO1zn0YMLbwui"];
-    
-//    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
-    PFUser *currentUser = [PFUser currentUser];
-    if (!currentUser) {
-        // Dummy username and password
-        PFUser *user = [PFUser user];
-        user.username = @"Matt";
-        user.password = @"password";
-        user.email = @"Matt@example.com";
-        
-        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (error) {
-                //assume error is bc user already existed
-                [PFUser logInWithUsername:@"Matt" password:@"password"];
-            }
-        }];
-    }
+//
+////    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//    
+//    PFUser *currentUser = [PFUser currentUser];
+//    if (!currentUser) {
+//        // Dummy username and password
+//        PFUser *user = [PFUser user];
+//        user.username = @"Matt";
+//        user.password = @"password";
+//        user.email = @"Matt@example.com";
+//        
+//        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            if (error) {
+//                //assume error is bc user already existed
+//                [PFUser logInWithUsername:@"Matt" password:@"password"];
+//            }
+//        }];
+//    }
     
     
     

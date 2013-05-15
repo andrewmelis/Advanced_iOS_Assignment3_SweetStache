@@ -34,8 +34,7 @@
     self.FeedScroll.delegate = self;
     self.FeedScroll.dataSource = self;
     
-    [self downloadAllImages];
-    [self setUpImages:_rawImages];
+
     
 
 
@@ -47,6 +46,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) viewDidAppear:(BOOL)animated
+{
+    [self downloadAllImages];
+    [self setUpImages:_rawImages];
+    
+}
 
 //implement library picker also
 - (IBAction)CameraButton:(UIBarButtonItem *)sender {
@@ -85,8 +90,40 @@
 }
 
 
+-(void)setParseCreds
+{
+    //Parse credentials
+    [Parse setApplicationId:@"LcTLLRaYWf9UpAWk1vMd5jumqLZOmIOdTeSeHixw" clientKey:@"h34VPKTuWaBvtd6QGsWikihfmYICO1zn0YMLbwui"];
+    
+    //    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    if (!currentUser) {
+        // Dummy username and password
+        PFUser *user = [PFUser user];
+        user.username = @"Matt";
+        user.password = @"password";
+        user.email = @"Matt@example.com";
+        
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (error) {
+                //assume error is bc user already existed
+                [PFUser logInWithUsername:@"Matt" password:@"password"];
+            }
+        }];
+    }
+}
+
 -(void)downloadAllImages
 {
+    PFUser *currentUser = [PFUser currentUser];
+    if(!currentUser) {
+        [PFUser logInWithUsername:@"Matt" password:@"password"];
+    }
+//    while (!currentUser) {
+//        [self setParseCreds];
+//    }
+    
     PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto"];
     PFUser *user = [PFUser currentUser];
     [query whereKey:@"user" equalTo:user];
