@@ -30,6 +30,5 @@
 
 -(void)uploadImages:(NSData *)imageData;
 -(void)setUpImages:(NSArray *)images;
--(void)buttonTouched:(id) sender;
 
 @end

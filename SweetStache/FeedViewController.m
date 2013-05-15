@@ -8,6 +8,8 @@
 
 #import "FeedViewController.h"
 #import "FeedCell.h"
+#import <QuartzCore/QuartzCore.h>
+#import "EditViewController.h"
 
 
 
@@ -16,17 +18,17 @@
 @end
 
 @implementation FeedViewController
+{
+    EditViewController *controllerForSegue;
+    UIImage *imageToSend;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     _rawImages = [[NSMutableArray alloc] init];
-//    _displayImages = [[NSMutableArray alloc] initWithObjects:@"poop",@"dumb",@"stupid", nil];
-//    _displayTags = [[NSMutableArray alloc] init];
     _displayImages = [[NSMutableArray alloc] init];
-    
-//    _displayTags  = [[NSMutableArray alloc]initWithObjects:@"testName1",@"testName2",@"testName3",@"testName4",@"testName5", nil ];
     
     //set delegate and data source
     self.FeedScroll.delegate = self;
@@ -46,7 +48,7 @@
 }
 
 
-
+//implement library picker also
 - (IBAction)CameraButton:(UIBarButtonItem *)sender {
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]==YES) {
         //create image picker controller
@@ -101,84 +103,7 @@
         
         
         NSLog(@"successfully retrieved %d photos", objects.count);
-        
-        
-        //if there are photos, we start extracting the data
-        //save a list of object IDs while extracting this data
-        
-//        NSMutableArray *newObjectIDArray = [NSMutableArray array];
-//        NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-//        
-//        if (objects.count >0) {
-//            for (PFObject *eachObject in objects) {
-//                [newObjectIDArray addObject:[eachObject objectId]];
-//            }
-//        }
-//
-//        //compare the old and new object IDs
-//        NSMutableArray *newCompareObjectIDArray = [NSMutableArray arrayWithArray:newObjectIDArray];
-//        NSMutableArray *newCompareObjectIDArray2 = [NSMutableArray arrayWithArray:newObjectIDArray];
-//        NSMutableArray *oldCompareObjectIDArray = [NSMutableArray arrayWithArray:[standardUserDefaults objectForKey:@"objectIDArray"]];
-//        
-//        if([standardUserDefaults objectForKey:@"objectIDArray"]) {
-//            [newCompareObjectIDArray removeObjectsInArray:oldCompareObjectIDArray]; //new objects
-//            
-//            //remove old objects if you delete them using the web browser
-//            [oldCompareObjectIDArray removeObjectsInArray:newCompareObjectIDArray2];
-//            if (oldCompareObjectIDArray.count >0) {
-//                //check the position in the objectIDArray and remove
-//                NSMutableArray *listOfToRemove = [[NSMutableArray alloc] init];
-//                for (NSString *objectID in oldCompareObjectIDArray) {
-//                    int i = 0;
-//                    for(NSString *oldObjectID in [standardUserDefaults objectForKey:@"objectIDArray"]){
-//                        if([objectID isEqualToString:oldObjectID]) {
-//                            //remove it
-//                            for(UIView *view in [_FeedScroll subviews]) {
-//                                if([view isKindOfClass:[UIButton class]]) {
-//                                    if (view.tag == i) {
-//                                        [view removeFromSuperview];
-//                                        NSLog(@"removing pic at position %i", i);
-//                                    }
-//                                }
-//                            }
-//                            
-//                            //make list of all that you want to remove and remove at the end
-//                            [listOfToRemove addObject:[NSNumber numberWithInt:i]];
-//                        }
-//                        i++;
-//                    }
-//                }
-//                
-//                //remove from the back
-//                NSSortDescriptor *highestToLowest = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:NO];
-//                [listOfToRemove sortUsingDescriptors:[NSArray arrayWithObject:highestToLowest]];
-//                
-//                for (NSNumber *index in listOfToRemove) {
-//                    [_allImages removeObjectAtIndex:[index intValue]];
-////                    [self setUpImages:_allImages];
-//                }
-//                
-//                //this method sets up the downloaded images and places them in a grid
-//                //here?
-//            }
-//            
-//        }
-//        
-        //add new objects
-//        for (NSString *objectID in newCompareObjectIDArray){
-//        for (NSString *objectID in newObjectIDArray){
-//            for (PFObject *eachObject in objects){
-//                if ([[eachObject objectId] isEqualToString:objectID]) {
-//                    NSMutableArray *selectedPhotoArray = [[NSMutableArray alloc] init];
-//                    [selectedPhotoArray addObject:eachObject];
-//                    
-//                    if (selectedPhotoArray.count > 0) {
-//                        [_allImages addObjectsFromArray:selectedPhotoArray];
-//                    }
-//                }
-//            }
-//        }
-
+    
         _rawImages = [objects copy];
         
         [self setUpImages:_rawImages];
@@ -202,7 +127,7 @@
 {
     NSLog(@"setting up images");
     
-//    _displayImages = [[NSMutableArray alloc] init]; //setting up new array each time--probably not the best
+    _displayImages = [[NSMutableArray alloc] init]; //setting up new array each time--probably not the best
                                                     //ensures no duplicates, but worse performance
     
     // This method sets up the downloaded images and places them nicely in a grid
@@ -323,9 +248,7 @@
     if (_displayImages != NULL) {
         return _displayImages.count;
     }
-    else {
-        return _displayTags.count;
-    }
+    else return 0;  //TODO check this later
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -345,13 +268,37 @@
         [[cell cellLabel]setText:[_displayTags objectAtIndex:indexPath.item]];
     }
     
-        cell.backgroundColor = [UIColor lightGrayColor];
-//        cell.layer.cornerRadius=30;         //make it pretty
+        cell.backgroundColor = [UIColor whiteColor];
+        cell.layer.cornerRadius=10;         //make it pretty
         return cell;
 //    }
 //    else return NULL;
     
 }
 
+//segue methods
 
+
+
+//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSLog(@"clicked on picture at index %i",indexPath.item);
+//    
+//    [self performSegueWithIdentifier:@"imageEdit" sender:self];
+//    
+//}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"imageEdit"]) {
+//        [self prepareForShowPhotoSegue:segue withIndexPath:sender];
+      
+        NSLog(@"clicked on picture at index %@",sender );
+        
+        controllerForSegue = segue.destinationViewController;
+        UIImage *image = [_displayImages objectAtIndex:0];
+//        UIImage *image = [_displayImages objectAtIndex:0];
+        controllerForSegue.mainImage = image;
+    }
+}
 @end
