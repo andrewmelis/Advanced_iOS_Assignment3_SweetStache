@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
+#import <Parse/Parse.h>
 
 @interface EditViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -15,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *filterCollection;
 
 @property (strong, nonatomic) NSMutableArray *filters;
+
+@property (strong, nonatomic) MBProgressHUD *HUD;
+@property (strong, nonatomic) MBProgressHUD *refreshHUD;
 
 - (IBAction)shareButton:(UIBarButtonItem *)sender;
 

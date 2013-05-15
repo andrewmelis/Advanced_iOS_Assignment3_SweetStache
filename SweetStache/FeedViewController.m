@@ -188,6 +188,7 @@
     
 }
 
+//ideally, would DRY this up
 -(void)uploadImages:(NSData *)imageData
 {
     PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
