@@ -17,7 +17,8 @@
 
 @interface FeedViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate>
 
-@property (weak, nonatomic) NSMutableArray *allImages;
+@property (strong, nonatomic) NSMutableArray *rawImages;
+@property (strong, nonatomic) NSMutableArray *displayImages;
 @property (strong, nonatomic) MBProgressHUD *HUD;
 @property (strong, nonatomic) MBProgressHUD *refreshHUD;
 

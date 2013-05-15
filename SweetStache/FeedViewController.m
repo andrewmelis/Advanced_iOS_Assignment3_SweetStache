@@ -20,6 +20,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    _rawImages = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,79 +89,83 @@
         //if there are photos, we start extracting the data
         //save a list of object IDs while extracting this data
         
-        NSMutableArray *newObjectIDArray = [NSMutableArray array];
-        NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-        
-        if (objects.count >0) {
-            for (PFObject *eachObject in objects) {
-                [newObjectIDArray addObject:[eachObject objectId]];
-            }
-        }
-        
-        //compare the old and new object IDs
-        NSMutableArray *newCompareObjectIDArray = [NSMutableArray arrayWithArray:newObjectIDArray];
-        NSMutableArray *newCompareObjectIDArray2 = [NSMutableArray arrayWithArray:newObjectIDArray];
-        NSMutableArray *oldCompareObjectIDArray = [NSMutableArray arrayWithArray:[standardUserDefaults objectForKey:@"objectIDArray"]];
-        
-        if([standardUserDefaults objectForKey:@"objectIDArray"]) {
-            [newCompareObjectIDArray removeObjectsInArray:oldCompareObjectIDArray]; //new objects
-            
-            //remove old objects if you delete them using the web browser
-            [oldCompareObjectIDArray removeObjectsInArray:newCompareObjectIDArray2];
-            if (oldCompareObjectIDArray.count >0) {
-                //check the position in the objectIDArray and remove
-                NSMutableArray *listOfToRemove = [[NSMutableArray alloc] init];
-                for (NSString *objectID in oldCompareObjectIDArray) {
-                    int i = 0;
-                    for(NSString *oldObjectID in [standardUserDefaults objectForKey:@"objectIDArray"]){
-                        if([objectID isEqualToString:oldObjectID]) {
-                            //remove it
-                            for(UIView *view in [_FeedScroll subviews]) {
-                                if([view isKindOfClass:[UIButton class]]) {
-                                    if (view.tag == i) {
-                                        [view removeFromSuperview];
-                                        NSLog(@"removing pic at position %i", i);
-                                    }
-                                }
-                            }
-                            
-                            //make list of all that you want to remove and remove at the end
-                            [listOfToRemove addObject:[NSNumber numberWithInt:i]];
-                        }
-                        i++;
-                    }
-                }
-                
-                //remove from the back
-                NSSortDescriptor *highestToLowest = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:NO];
-                [listOfToRemove sortUsingDescriptors:[NSArray arrayWithObject:highestToLowest]];
-                
-                for (NSNumber *index in listOfToRemove) {
-                    [_allImages removeObjectAtIndex:[index intValue]];
-//                    [self setUpImages:_allImages];
-                }
-                
-                //this method sets up the downloaded images and places them in a grid
-                //here?
-            }
-            
-        }
-        
+//        NSMutableArray *newObjectIDArray = [NSMutableArray array];
+//        NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+//        
+//        if (objects.count >0) {
+//            for (PFObject *eachObject in objects) {
+//                [newObjectIDArray addObject:[eachObject objectId]];
+//            }
+//        }
+//
+//        //compare the old and new object IDs
+//        NSMutableArray *newCompareObjectIDArray = [NSMutableArray arrayWithArray:newObjectIDArray];
+//        NSMutableArray *newCompareObjectIDArray2 = [NSMutableArray arrayWithArray:newObjectIDArray];
+//        NSMutableArray *oldCompareObjectIDArray = [NSMutableArray arrayWithArray:[standardUserDefaults objectForKey:@"objectIDArray"]];
+//        
+//        if([standardUserDefaults objectForKey:@"objectIDArray"]) {
+//            [newCompareObjectIDArray removeObjectsInArray:oldCompareObjectIDArray]; //new objects
+//            
+//            //remove old objects if you delete them using the web browser
+//            [oldCompareObjectIDArray removeObjectsInArray:newCompareObjectIDArray2];
+//            if (oldCompareObjectIDArray.count >0) {
+//                //check the position in the objectIDArray and remove
+//                NSMutableArray *listOfToRemove = [[NSMutableArray alloc] init];
+//                for (NSString *objectID in oldCompareObjectIDArray) {
+//                    int i = 0;
+//                    for(NSString *oldObjectID in [standardUserDefaults objectForKey:@"objectIDArray"]){
+//                        if([objectID isEqualToString:oldObjectID]) {
+//                            //remove it
+//                            for(UIView *view in [_FeedScroll subviews]) {
+//                                if([view isKindOfClass:[UIButton class]]) {
+//                                    if (view.tag == i) {
+//                                        [view removeFromSuperview];
+//                                        NSLog(@"removing pic at position %i", i);
+//                                    }
+//                                }
+//                            }
+//                            
+//                            //make list of all that you want to remove and remove at the end
+//                            [listOfToRemove addObject:[NSNumber numberWithInt:i]];
+//                        }
+//                        i++;
+//                    }
+//                }
+//                
+//                //remove from the back
+//                NSSortDescriptor *highestToLowest = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:NO];
+//                [listOfToRemove sortUsingDescriptors:[NSArray arrayWithObject:highestToLowest]];
+//                
+//                for (NSNumber *index in listOfToRemove) {
+//                    [_allImages removeObjectAtIndex:[index intValue]];
+////                    [self setUpImages:_allImages];
+//                }
+//                
+//                //this method sets up the downloaded images and places them in a grid
+//                //here?
+//            }
+//            
+//        }
+//        
         //add new objects
-        for (NSString *objectID in newCompareObjectIDArray){
-            for (PFObject *eachObject in objects){
-                if ([[eachObject objectId] isEqualToString:objectID]) {
-                    NSMutableArray *selectedPhotoArray = [[NSMutableArray alloc] init];
-                    [selectedPhotoArray addObject:eachObject];
-                    
-                    if (selectedPhotoArray.count > 0) {
-                        [_allImages addObjectsFromArray:selectedPhotoArray];
-                    }
-                }
-            }
-        }
+//        for (NSString *objectID in newCompareObjectIDArray){
+//        for (NSString *objectID in newObjectIDArray){
+//            for (PFObject *eachObject in objects){
+//                if ([[eachObject objectId] isEqualToString:objectID]) {
+//                    NSMutableArray *selectedPhotoArray = [[NSMutableArray alloc] init];
+//                    [selectedPhotoArray addObject:eachObject];
+//                    
+//                    if (selectedPhotoArray.count > 0) {
+//                        [_allImages addObjectsFromArray:selectedPhotoArray];
+//                    }
+//                }
+//            }
+//        }
+
+        _rawImages = [objects copy];
         
-        [self setUpImages:_allImages];
+        [self setUpImages:_rawImages];
+
        
         }
         else {
@@ -178,7 +183,27 @@
 
 -(void)setUpImages:(NSArray *)images
 {
-    NSLog(@"poopin");
+    NSLog(@"setting up images");
+    
+    _displayImages = [[NSMutableArray alloc] init]; //setting up new array each time--probably not the best
+                                                    //ensures no duplicates, but worse performance
+    
+    // This method sets up the downloaded images and places them nicely in a grid
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+//        NSMutableArray *imageDataArray = [NSMutableArray array];
+        
+        // Iterate over all images and get the data from the PFFile
+        for (int i = 0; i < images.count; i++) {
+            PFObject *eachObject = [images objectAtIndex:i];
+            PFFile *theImage = [eachObject objectForKey:@"imageFile"];
+            NSData *imageData = [theImage getData];
+            UIImage *image = [UIImage imageWithData:imageData];
+            [_displayImages addObject:image];
+            NSLog(@"what's inside displayimages? %@",_displayImages);
+            NSLog(@"how many images in displayimages? %i",_displayImages.count);   
+        }
+    });
     
 }
 
