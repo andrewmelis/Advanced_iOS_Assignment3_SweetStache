@@ -1,21 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="pb3-AV-OPe">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
-        <scene sceneID="5">
+        <!--Feed View Controller-->
+        <scene sceneID="2We-vo-WHm">
             <objects>
-                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                <viewController id="pb3-AV-OPe" customClass="FeedViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P4R-st-7cM">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kHj-Ck-tpY"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ybv-c1-ch4">
+                                <items>
+                                    <navigationItem title="Recent Mustaches" id="cML-kr-EAc">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="camera" id="119-lO-8oQ">
+                                            <connections>
+                                                <action selector="CameraButton:" destination="pb3-AV-OPe" id="hNt-pm-IcX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="xtS-lK-V4V">
+                                            <connections>
+                                                <action selector="RefreshButton:" destination="pb3-AV-OPe" id="RzS-uU-8je"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kHj-Ck-tpY" firstAttribute="top" secondItem="Ybv-c1-ch4" secondAttribute="bottom" type="default" id="9hd-mU-JP5"/>
+                            <constraint firstItem="Ybv-c1-ch4" firstAttribute="top" secondItem="P4R-st-7cM" secondAttribute="top" type="default" id="D1e-Ou-T6l"/>
+                            <constraint firstItem="Ybv-c1-ch4" firstAttribute="leading" secondItem="P4R-st-7cM" secondAttribute="leading" type="default" id="D9k-ZD-dlo"/>
+                            <constraint firstItem="kHj-Ck-tpY" firstAttribute="leading" secondItem="P4R-st-7cM" secondAttribute="leading" type="default" id="bLp-dx-68q"/>
+                            <constraint firstItem="kHj-Ck-tpY" firstAttribute="trailing" secondItem="P4R-st-7cM" secondAttribute="trailing" type="default" id="nLd-Ar-524"/>
+                            <constraint firstItem="Ybv-c1-ch4" firstAttribute="trailing" secondItem="P4R-st-7cM" secondAttribute="trailing" type="default" id="sCZ-Rh-nbQ"/>
+                            <constraint firstItem="kHj-Ck-tpY" firstAttribute="bottom" secondItem="P4R-st-7cM" secondAttribute="bottom" type="default" id="wrC-ov-2sX"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="FeedScroll" destination="kHj-Ck-tpY" id="QYL-To-AKI"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZAy-Pl-LlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="476" y="299"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

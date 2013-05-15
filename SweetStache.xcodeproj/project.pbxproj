@@ -17,7 +17,17 @@
 		2838D2AD174350730025D9F4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2838D2AC174350730025D9F4 /* Default@2x.png */; };
 		2838D2AF174350730025D9F4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2838D2AE174350730025D9F4 /* Default-568h@2x.png */; };
 		2838D2B2174350730025D9F4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2838D2B0174350730025D9F4 /* MainStoryboard.storyboard */; };
-		2838D2B5174350730025D9F4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2838D2B4174350730025D9F4 /* ViewController.m */; };
+		2838D2B5174350730025D9F4 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2838D2B4174350730025D9F4 /* FeedViewController.m */; };
+		2838D2BC174351520025D9F4 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2BB174351520025D9F4 /* Parse.framework */; };
+		2838D2BE174351880025D9F4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2BD174351880025D9F4 /* AudioToolbox.framework */; };
+		2838D2C0174351900025D9F4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2BF174351900025D9F4 /* CFNetwork.framework */; };
+		2838D2C21743519F0025D9F4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2C11743519F0025D9F4 /* CoreLocation.framework */; };
+		2838D2C4174351AC0025D9F4 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2C3174351AC0025D9F4 /* libz.1.1.3.dylib */; };
+		2838D2C6174351B80025D9F4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2C5174351B80025D9F4 /* MobileCoreServices.framework */; };
+		2838D2C8174351C90025D9F4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2C7174351C90025D9F4 /* QuartzCore.framework */; };
+		2838D2CA174351D50025D9F4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2C9174351D50025D9F4 /* Security.framework */; };
+		2838D2CC174351DD0025D9F4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2CB174351DD0025D9F4 /* StoreKit.framework */; };
+		2838D2CE174351E90025D9F4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838D2CD174351E90025D9F4 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +45,20 @@
 		2838D2AC174350730025D9F4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2838D2AE174350730025D9F4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2838D2B1174350730025D9F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		2838D2B3174350730025D9F4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2838D2B4174350730025D9F4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2838D2B3174350730025D9F4 /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		2838D2B4174350730025D9F4 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		2838D2BB174351520025D9F4 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		2838D2BD174351880025D9F4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2838D2BF174351900025D9F4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		2838D2C11743519F0025D9F4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2838D2C3174351AC0025D9F4 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		2838D2C5174351B80025D9F4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		2838D2C7174351C90025D9F4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2838D2C9174351D50025D9F4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		2838D2CB174351DD0025D9F4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		2838D2CD174351E90025D9F4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2838D30F1743579D0025D9F4 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		2838D3101743579D0025D9F4 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,9 +66,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2838D2CE174351E90025D9F4 /* SystemConfiguration.framework in Frameworks */,
+				2838D2CC174351DD0025D9F4 /* StoreKit.framework in Frameworks */,
+				2838D2CA174351D50025D9F4 /* Security.framework in Frameworks */,
+				2838D2C8174351C90025D9F4 /* QuartzCore.framework in Frameworks */,
+				2838D2C6174351B80025D9F4 /* MobileCoreServices.framework in Frameworks */,
+				2838D2C4174351AC0025D9F4 /* libz.1.1.3.dylib in Frameworks */,
+				2838D2C21743519F0025D9F4 /* CoreLocation.framework in Frameworks */,
+				2838D29D174350730025D9F4 /* CoreGraphics.framework in Frameworks */,
+				2838D2C0174351900025D9F4 /* CFNetwork.framework in Frameworks */,
+				2838D2BE174351880025D9F4 /* AudioToolbox.framework in Frameworks */,
 				2838D299174350730025D9F4 /* UIKit.framework in Frameworks */,
 				2838D29B174350730025D9F4 /* Foundation.framework in Frameworks */,
-				2838D29D174350730025D9F4 /* CoreGraphics.framework in Frameworks */,
+				2838D2BC174351520025D9F4 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +105,16 @@
 		2838D297174350730025D9F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2838D2CD174351E90025D9F4 /* SystemConfiguration.framework */,
+				2838D2CB174351DD0025D9F4 /* StoreKit.framework */,
+				2838D2C9174351D50025D9F4 /* Security.framework */,
+				2838D2C7174351C90025D9F4 /* QuartzCore.framework */,
+				2838D2C5174351B80025D9F4 /* MobileCoreServices.framework */,
+				2838D2C3174351AC0025D9F4 /* libz.1.1.3.dylib */,
+				2838D2C11743519F0025D9F4 /* CoreLocation.framework */,
+				2838D2BF174351900025D9F4 /* CFNetwork.framework */,
+				2838D2BD174351880025D9F4 /* AudioToolbox.framework */,
+				2838D2BB174351520025D9F4 /* Parse.framework */,
 				2838D298174350730025D9F4 /* UIKit.framework */,
 				2838D29A174350730025D9F4 /* Foundation.framework */,
 				2838D29C174350730025D9F4 /* CoreGraphics.framework */,
@@ -83,11 +125,12 @@
 		2838D29E174350730025D9F4 /* SweetStache */ = {
 			isa = PBXGroup;
 			children = (
+				2838D2B0174350730025D9F4 /* MainStoryboard.storyboard */,
 				2838D2A7174350730025D9F4 /* AppDelegate.h */,
 				2838D2A8174350730025D9F4 /* AppDelegate.m */,
-				2838D2B0174350730025D9F4 /* MainStoryboard.storyboard */,
-				2838D2B3174350730025D9F4 /* ViewController.h */,
-				2838D2B4174350730025D9F4 /* ViewController.m */,
+				2838D2B3174350730025D9F4 /* FeedViewController.h */,
+				2838D2B4174350730025D9F4 /* FeedViewController.m */,
+				2838D311174357C20025D9F4 /* MBProgressHUD */,
 				2838D29F174350730025D9F4 /* Supporting Files */,
 			);
 			path = SweetStache;
@@ -105,6 +148,15 @@
 				2838D2AE174350730025D9F4 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2838D311174357C20025D9F4 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				2838D30F1743579D0025D9F4 /* MBProgressHUD.h */,
+				2838D3101743579D0025D9F4 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,7 +227,7 @@
 			files = (
 				2838D2A5174350730025D9F4 /* main.m in Sources */,
 				2838D2A9174350730025D9F4 /* AppDelegate.m in Sources */,
-				2838D2B5174350730025D9F4 /* ViewController.m in Sources */,
+				2838D2B5174350730025D9F4 /* FeedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +312,10 @@
 		2838D2B9174350730025D9F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SweetStache/SweetStache-Prefix.pch";
 				INFOPLIST_FILE = "SweetStache/SweetStache-Info.plist";
@@ -271,6 +327,10 @@
 		2838D2BA174350730025D9F4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SweetStache/SweetStache-Prefix.pch";
 				INFOPLIST_FILE = "SweetStache/SweetStache-Info.plist";
